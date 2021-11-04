@@ -1,0 +1,68 @@
+.header__global {
+  position: relative;
+  box-shadow: 0 -5px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 -5px 5px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 -5px 5px 5px rgba(0, 0, 0, 0.4);
+  padding: 0px;
+  z-index: 1;
+
+  .topbar__global {
+    background-color: #ffffff;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 26px;
+    padding-right: 36px;
+
+    .logotipo__div {
+      text-align: left;
+      @media (max-width: 1080px) {
+        text-align: center;
+      }
+    }
+
+    .topnav__div {
+      display: flex !important;
+      align-items: center;
+      text-align: right;
+      justify-content: end;
+      @media (max-width: 1080px) {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .ui.input {
+        align-items: center;
+
+        input {
+          background-color: transparent;
+          border: 0px;
+          border-bottom: 2px solid #000;
+          border-radius: 0px;
+          color: #000;
+          padding: 10px;
+          width: 320px;
+          font-size: 14px;
+          transition: width 0.7s;
+          &:focus {
+            width: 500px;
+            @media (max-width: 1080px) {
+              width: 320px;
+            }
+          }
+        }
+
+        i {
+          color: #000;
+          opacity: 1 !important;
+          font-size: 18px;
+          right: -12px !important;
+        }
+      }
+    }
+
+    .topbar__logotipo {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}

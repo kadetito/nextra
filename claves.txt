@@ -1,0 +1,10 @@
+name bucket: storewear
+
+politica: storewear
+
+user: strapi-ecommerce
+ID clave acceso: AKIAYRCYSFA7RRB7Z7PQ
+clave de acceso secreta: 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
+
+Los usuarios con acceso a la consola de administración de AWS pueden iniciar sesión en: 
+https://586448775231.signin.aws.amazon.com/console
