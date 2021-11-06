@@ -1,20 +1,30 @@
-import React from "react";
-import { Menu, Icon, Label } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Icon } from "semantic-ui-react";
 import Link from "next/link";
 import BasicModal from "../../Modal/BasicModal";
+import Auth from "../../auth";
+import useAuth from "../../../hooks/useAuth";
 
 export default function MenuWeb() {
+  const [showModal, setShowModal] = useState(false);
+  const [titleModal, setTitleModal] = useState("Iniciar sesión");
+  const { logout } = useAuth;
+  const onShowModal = () => setShowModal(true);
+  const onCloseModal = () => setShowModal(false);
   return (
     <>
       <div className="menu__global">
         <div className="row">
           <div className="col-md-12 topnav__div ">
             <MenuCollections />
-            <MenuUser />
+            <button onClick={logout}> Cerrar sesión</button>
+            <MenuUser onShowModal={onShowModal} />
           </div>
         </div>
       </div>
-      <BasicModal>contenido modal basica</BasicModal>
+      <BasicModal show={showModal} setShow={setShowModal} title={titleModal}>
+        <Auth onCloseModal={onCloseModal} setTitleModal={setTitleModal} />
+      </BasicModal>
     </>
   );
 }
@@ -38,14 +48,11 @@ function MenuCollections() {
   );
 }
 
-function MenuUser() {
+function MenuUser(props) {
+  const { onShowModal } = props;
   return (
-    <>
-      <Link href="/">
-        <a className="links">
-          <Icon name="user outline" />
-        </a>
-      </Link>
-    </>
+    <button onClick={onShowModal} className="links">
+      <Icon name="user outline" />
+    </button>
   );
 }

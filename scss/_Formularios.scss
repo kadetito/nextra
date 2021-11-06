@@ -1,0 +1,16 @@
+.formularios___global {
+  .links {
+    background-color: transparent;
+    border: 0px;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .links:hover {
+    text-decoration: none;
+  }
+
+  .text-error {
+    color: #fc0000;
+  }
+}
