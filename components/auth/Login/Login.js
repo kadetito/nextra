@@ -17,7 +17,7 @@ export default function Login(props) {
     onSubmit: async (formData) => {
       const response = await loginAPI(formData);
       if (response?.jwt) {
-        login(response.jwt);
+        login(response?.jwt);
         toast.success("Usuario autenticado");
         onCloseModal();
       } else {

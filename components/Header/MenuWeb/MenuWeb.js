@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "semantic-ui-react";
 import Link from "next/link";
 import BasicModal from "../../Modal/BasicModal";
 import Auth from "../../auth";
 import useAuth from "../../../hooks/useAuth";
+import { getMeAPI } from "../../../api/user";
 
 export default function MenuWeb() {
   const [showModal, setShowModal] = useState(false);
+
+  const [user, setUser] = useState(undefined);
   const [titleModal, setTitleModal] = useState("Iniciar sesión");
-  const { logout } = useAuth;
+  const { auth, logout } = useAuth();
+
+  useEffect(() => {
+    (async () => {
+      const response = await getMeAPI(logout);
+      setUser(response);
+    })();
+  }, [auth]);
+
   const onShowModal = () => setShowModal(true);
   const onCloseModal = () => setShowModal(false);
   return (
@@ -17,8 +28,10 @@ export default function MenuWeb() {
         <div className="row">
           <div className="col-md-12 topnav__div ">
             <MenuCollections />
-            <button onClick={logout}> Cerrar sesión</button>
-            <MenuUser onShowModal={onShowModal} />
+
+            {user !== undefined && (
+              <MenuUser onShowModal={onShowModal} user={user} logout={logout} />
+            )}
           </div>
         </div>
       </div>
@@ -49,10 +62,40 @@ function MenuCollections() {
 }
 
 function MenuUser(props) {
-  const { onShowModal } = props;
+  const { onShowModal, user, logout } = props;
   return (
-    <button onClick={onShowModal} className="links">
-      <Icon name="user outline" />
-    </button>
+    <>
+      {user ? (
+        <>
+          <Link href="/orders">
+            <a className="links">Mis pedidos</a>
+          </Link>
+          <Link href="/wishlist">
+            <a className="links">
+              <Icon title="perfil" name="heart" /> Mis favoritos
+            </a>
+          </Link>
+          <Link href="/account">
+            <a className="links">
+              <Icon title="perfil" name="user" /> {user.name} {user.lastname}
+            </a>
+          </Link>
+
+          <Link href="/cart">
+            <a className="links">
+              <Icon title="carrito" name="cart" />
+            </a>
+          </Link>
+
+          <button className="links" onClick={logout}>
+            <Icon title="logout" name="sign out" />
+          </button>
+        </>
+      ) : (
+        <button onClick={onShowModal} className="links">
+          <Icon name="user outline" />
+        </button>
+      )}
+    </>
   );
 }

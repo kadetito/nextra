@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import AuthContext from "../context/AuthContext";
 import { useRouter } from "next/router";
 import jwtDecode from "jwt-decode";
 import "../scss/global.scss";
@@ -6,7 +7,6 @@ import { getToken, removeToken, setToken } from "../api/token";
 import "semantic-ui-css/semantic.min.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AuthContext from "../context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(undefined);
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    const token = getToken;
+    const token = getToken();
     if (token) {
       setAuth({
         token,

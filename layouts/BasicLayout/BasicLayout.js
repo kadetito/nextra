@@ -1,8 +1,10 @@
 import React from "react";
 import Header from "../../components/Header";
+import classNames from "classnames";
 
 export default function BasicLayout(props) {
-  const { children } = props;
+  const { children, className } = props;
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -11,8 +13,7 @@ export default function BasicLayout(props) {
 
           <div className="container">
             <div className="row">
-              <div className="col-12">
-                <h1>Basic alayout</h1>
+              <div className={classNames("col-12", { [className]: className })}>
                 {children}
               </div>
             </div>
