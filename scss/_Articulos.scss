@@ -1,0 +1,44 @@
+.articulos___global {
+  .card {
+    background-color: #ffffff;
+  }
+
+  .card:hover {
+    background-color: #fdf6f6;
+  }
+
+  a {
+    color: #000;
+  }
+  a:hover {
+    color: #333333;
+  }
+  .titulo {
+    height: 80px;
+  }
+  .poster {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+
+    img {
+      @media (max-width: 1080px) {
+        max-height: 400px;
+      }
+    }
+  }
+
+  .info {
+    height: 140px;
+    margin-top: 15px;
+
+    .summary {
+      min-height: 60px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

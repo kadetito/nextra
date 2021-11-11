@@ -9,7 +9,7 @@ export default function TopBar() {
         <div className="col-md-4 logotipo__div">
           <Logo />
         </div>
-        <div className="col-md-8 topnav__div mt-1">
+        <div className="col-md-8 menutopnav__div mt-1">
           <div>
             <Search />
           </div>
