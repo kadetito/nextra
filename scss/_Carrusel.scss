@@ -1,0 +1,12 @@
+.carrusel__global {
+  .carousel-screenshots {
+    .slick-slide {
+      overflow: hidden !important;
+      height: 140px !important;
+      width: 100% !important;
+      &__img {
+        margin: 12px;
+      }
+    }
+  }
+}

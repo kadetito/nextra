@@ -38,3 +38,14 @@ export async function getTotalItemsCategory(categoria) {
     return null;
   }
 }
+
+export async function getItemByURL(path) {
+  try {
+    const url = `${BASE_PATH}/ropas?url=${path}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    return result[0];
+  } catch (error) {
+    return null;
+  }
+}

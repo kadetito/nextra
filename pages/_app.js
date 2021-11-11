@@ -7,6 +7,9 @@ import { getToken, removeToken, setToken } from "../api/token";
 import "semantic-ui-css/semantic.min.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(undefined);

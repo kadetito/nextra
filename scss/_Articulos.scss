@@ -42,3 +42,18 @@
     }
   }
 }
+
+.articulo__unico-global {
+  i.icon {
+    color: #000;
+
+    &.like {
+      color: red;
+    }
+  }
+
+  .articulo__video > div > div > div {
+    width: 100% !important;
+    min-height: 300px !important;
+  }
+}
